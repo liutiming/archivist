@@ -58,7 +58,10 @@ to_upload_file = [os.path.join(upload_path, f) for f in file_itself]
 for download_file, upload_file in zip(files_to_move, to_upload_file):
     free_size_in_gb = shutil.disk_usage("G:\\").free/(1024**3)
     file_size_in_gb = os.path.getsize(download_file)/(1024**3)
-    while file_size_in_gb < free_size_in_gb - 5:
+    print("Attempting to move " + download_file)
+    while file_size_in_gb > free_size_in_gb - 5:
         print("Not enough buffer space in the disk, reattempting in 1 minute")
+        print("File size (GB): " + str(file_size_in_gb))
+        print("Free space (GB): " + str(free_size_in_gb))
         time.sleep(60)
     shutil.move(download_file, upload_file)
