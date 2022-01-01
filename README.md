@@ -1,4 +1,6 @@
 # Archivist
+![archivist](https://socialify.git.ci/liutiming/archivist/image?description=1&descriptionEditable=Easily%20archive%20%F0%9F%93%A6%20Download%20folder%20to%20Google%20Drive%20%E2%98%81%EF%B8%8F&issues=1&language=1&name=1&owner=1&stargazers=1&theme=Light)
+
 Script for archiving Download folder by uploading **unmodified** files to a Google Drive folder. **Modified** files will remain in the Download folder for manual sorting. 
 
 ## Rationale 
