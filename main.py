@@ -51,7 +51,7 @@ upload_path = r"G:\My Drive\Outbox" + "\\" + current_date
 if os.path.isdir(upload_path):
     pass 
 else: 
-    os.makedirs(upload_path + 1, exist_ok=True)
+    os.makedirs(upload_path, exist_ok=True)
 
 file_itself = [f.replace(download_path + "\\", "") for f in files_to_move]
 to_upload_file = [os.path.join(upload_path, f) for f in file_itself]
