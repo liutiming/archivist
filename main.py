@@ -27,10 +27,14 @@ else:
 current_date = datetime.today().strftime('%Y%m%d')
 download_path = r"C:\Users\timing\Downloads"
 files = [os.path.join(download_path, file) for file in os.listdir(download_path)]
+files_size = [os.path.getsize(file) for file in files]
+
+files_sorted = [x for _, x in sorted(zip(files_size, files))]
 
 move_file_format = ["mp4", "wav"]
+files_to_move = [file for file in files_sorted if file[-3:] in move_file_format]
 
-files_to_move = [file for file in files if file[-3:] in move_file_format]
+
 
 files_to_check = list(set(files) - set(files_to_move))
 files_to_keep = list()
@@ -59,7 +63,7 @@ for download_file, upload_file in zip(files_to_move, to_upload_file):
     free_size_in_gb = shutil.disk_usage("G:\\").free/(1024**3)
     file_size_in_gb = os.path.getsize(download_file)/(1024**3)
     print("Attempting to move " + download_file)
-    while file_size_in_gb > free_size_in_gb - 5:
+    while file_size_in_gb > free_size_in_gb:
         print("Not enough buffer space in the disk, reattempting in 1 minute")
         print("File size (GB): " + str(file_size_in_gb))
         print("Free space (GB): " + str(free_size_in_gb))
